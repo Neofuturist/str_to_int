@@ -1,6 +1,5 @@
 from unittest import TestCase, main
 from main import *
-import os
 
 
 class ProgramTest(TestCase):
