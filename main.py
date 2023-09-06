@@ -45,7 +45,17 @@ def text2int(textnum, numwords={}):
         return resStr
 
 
-print(text2int("test семьдесят тысяч пятьдесят три тест"))
+def save_result(test_path):
+    with open(test_path, 'r') as f:
+        old_data = f.read()
+
+    new_data = text2int(old_data)
+
+    with open(test_path, 'w') as f:
+        f.write(new_data)
+
+
+print(text2int("test семьдесят тысяч пятьдесят три test"))
 print(text2int("семь тысяч пятьдесят три"))
 
 with open('text.txt', 'r') as f:
