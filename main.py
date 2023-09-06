@@ -17,18 +17,33 @@ def text2int(textnum, numwords={}):
         for idx, word in enumerate(scales):   numwords[word] = (10 ** (idx * 3 or 2), 0)
 
     current = result = 0
+    resStr = ""
     for word in textnum.split():
         if word not in numwords:
-            raise Exception("Неверное слово: " + word)
+            if resStr.replace(' ', '') == "":
+                if result + current == 0:
+                    resStr = word
+                else:
+                    resStr = str(result + current) + " " + word
+            else:
+                if result + current == 0:
+                    resStr = resStr + " " + word
+                else:
+                    resStr = resStr + " " + str(result + current) + " " + word
+        else:
+            scale, increment = numwords[word]
+            current = current * scale + increment
+            if scale > 100:
+                result += current
+                current = 0
+    if resStr == "":
+        if result + current == 0:
+            return ""
+        else:
+            return result + current
+    else:
+        return resStr
 
-        scale, increment = numwords[word]
-        current = current * scale + increment
-        if scale > 100:
-            result += current
-            current = 0
 
-    return result + current
-
-
-print(text2int("семьдесят тысяч пятьдесят три test"))
+print(text2int("test семьдесят тысяч пятьдесят три тест"))
 print(text2int("семь тысяч пятьдесят три"))
