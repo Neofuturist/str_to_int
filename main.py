@@ -47,3 +47,11 @@ def text2int(textnum, numwords={}):
 
 print(text2int("test семьдесят тысяч пятьдесят три тест"))
 print(text2int("семь тысяч пятьдесят три"))
+
+with open('text.txt', 'r') as f:
+    old_data = f.read()
+
+new_data = text2int(old_data)
+
+with open('text.txt', 'w') as f:
+    f.write(new_data)
