@@ -25,8 +25,8 @@ RELEASE_KEY_PASSWORD=<пароль ключа>
 ## Сборка проекта
 
 Откройте терминал в корне проекта и введите команду:
-```sh
-$ docker-compose up --build
+```
+docker-compose up --build
 ```
 После выполнения сборки в корне проекта появится папка outputs с собранными apk и bundle версий release и debug.
 
